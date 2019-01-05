@@ -1,10 +1,10 @@
 function coinUpdateNew()
 {
 
-  var url = "https://api.coinmarketcap.com/v1/ticker/?limit=0"
+  var url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=53aff5f4-1a82-40af-8444-926a7abf4cde&start=1&limit=400"
   var response = UrlFetchApp.fetch(url);
   var json = response.getContentText();
-  var data = JSON.parse(json);
+  var data = JSON.parse(json).data;
 
   //var ss = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0]
   var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Live")
@@ -18,23 +18,23 @@ function coinUpdateNew()
   {
     for(var j in data)
    {
-     if(coins[i][0] == data[j].id)                                      
+     if(coins[i][0] == data[j].slug)                                      
      {
-       coins[i][1]=data[j].price_usd
+       coins[i][1]=data[j].quote.USD.price
        data.splice(count, 1);
        coins[i][2]=0
        //continue;
      }
-     else if(coins[i][3] == data[j].id)                                      
+     else if(coins[i][3] == data[j].slug)                                      
      {
-       coins[i][4]=data[j].price_usd
+       coins[i][4]=data[j].quote.USD.price
        data.splice(count, 1);
        coins[i][5]=0;
        //continue;
      }
-     else if(coins[i][6] == data[j].id)                                      
+     else if(coins[i][6] == data[j].slug)                                      
      {
-       coins[i][7]=data[j].price_usd
+       coins[i][7]=data[j].quote.USD.price
        data.splice(count, 1);
        coins[i][8]=0;
        //continue;
