@@ -58,11 +58,11 @@ function wolframSET() {
     
     fitXs = "["+fitXs.slice(0, fitXs.length-1)+"]";
     
-    Lurl = "http://api.wolframalpha.com/v2/query?input=Solve["+goal+"==Fit["+input+","+fitXs+",x],x]&appid=ARQVGA-XER3LA8E4A&output=json"
+    Lurl = "http://api.wolframalpha.com/v2/query?input=Solve["+goal+"==Fit["+input+","+fitXs+",x],x]&appid=" + wolframAPIKey() +"&output=json"
     Logger.log(Lurl)
       
     var payload = {
-      'apikey': '297FDHAB3A8A9ACC9B65',
+      'apikey': tinyAPIKey(),
       'provider' : 'tinyurl_com',
       'format' : "text",
       'url' : Lurl}
@@ -135,13 +135,13 @@ function wolframGET(str)
   str=str.replace(" ", "+")
   str=str.replace("/", "%2F")
   
-  var Lurl = "http://api.wolframalpha.com/v2/query?input="+str+"&appid=ARQVGA-XER3LA8E4A&output=json"
-  //var Lurl = "http://api.wolframalpha.com/v2/query?input=1%2F250+(sqrt(23442484654)+-+18598)&appid=ARQVGA-XER3LA8E4A&output=json"
+  var Lurl = "http://api.wolframalpha.com/v2/query?input="+str+"&appid=" + wolframAPIKey() + "&output=json"
+  //var Lurl = "http://api.wolframalpha.com/v2/query?input=1%2F250+(sqrt(23442484654)+-+18598)&appid=" + wolframAPIKey() + "&output=json"
   
   Logger.log(Lurl)
       
     var payload = {
-      'apikey': '297FDHAB3A8A9ACC9B65',
+      'apikey': tinyAPIKey(),
       'provider' : 'tinyurl_com',
       'format' : "text",
       'url' : Lurl}
