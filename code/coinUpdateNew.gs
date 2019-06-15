@@ -1,7 +1,7 @@
 function coinUpdateNew()
 {
 
-  var url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=53aff5f4-1a82-40af-8444-926a7abf4cde&start=1&limit=400"
+  var url = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=" + coinAPIKey() +"&start=1&limit=400"
   var response = UrlFetchApp.fetch(url);
   var json = response.getContentText();
   var data = JSON.parse(json).data;
