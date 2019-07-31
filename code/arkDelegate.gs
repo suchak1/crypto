@@ -2,22 +2,22 @@ function arkDelegate() {
   
   var ss = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Live")
  
-  var url = "https://node1.arknet.cloud/api/delegates/"
-  var response = UrlFetchApp.fetch(url);
-  var json = response.getContentText();
-  var data = JSON.parse(json);
+  var url = "https://api.arkcoin.net/api/v2/delegates"
+  var response = UrlFetchApp.fetch(url)
+  var json = response.getContentText()
+  var data = JSON.parse(json)
 
-  var rate = 0;
+  var rank = 0;
   
-  for (var i in data.delegates)
+  for (var i in data.data)
   {
-    if(data.delegates[i].username == "dutchdelegate")
+    if(data.data[i].username == "dutchdelegate")
     {
-      rate = data.delegates[i].rate
+      rank = data.data[i].rank
       break
     }
   }
   
-  ss.getRange("R5").setValue(rate)
+  ss.getRange("R5").setValue(rank)
   
 }
